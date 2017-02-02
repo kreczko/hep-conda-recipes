@@ -20,9 +20,9 @@ RUN conda/bin/conda update --yes -q conda && \
     conda/bin/conda update --yes --all && \
     conda/bin/conda install --yes  conda-build anaconda-client
 ENV CONDARC /root/.condarc
-RUN conda/bin/conda config --add channels https://conda.binstar.org/auto && \
-    conda/bin/conda config --add channels https://conda.binstar.org/kreczko && \
-    conda/bin/conda config --add channels https://conda.binstar.org/conda-forge && \
+RUN conda/bin/conda config --add channels auto && \
+    conda/bin/conda config --add channels kreczko && \
+    conda/bin/conda config --add channels conda-forge && \
     conda/bin/conda config --set show_channel_urls yes
 
 VOLUME ["/conda-recipes"]

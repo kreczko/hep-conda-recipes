@@ -28,6 +28,8 @@ wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
 # follow instructions https://conda.io/docs/install/quick.html
 bash Miniconda2-latest-Linux-x86_64.sh
 
+# it is important that you use conda-forge for the boost package
+# as the default does not come with libboost_python
 conda config --add channels conda-forge
 conda config --add channels kreczko
 

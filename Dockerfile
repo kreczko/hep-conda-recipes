@@ -24,6 +24,7 @@ RUN conda/bin/conda config --add channels auto && \
     conda/bin/conda config --add channels kreczko && \
     conda/bin/conda config --add channels conda-forge && \
     conda/bin/conda config --set show_channel_urls yes
+RUN conda/bin/conda clean --tarballs --yes
 
 VOLUME ["/conda-recipes"]
 WORKDIR /conda-recipes

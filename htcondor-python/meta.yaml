@@ -3,12 +3,13 @@ package:
   version: {{ environ.get('CONDOR_VERSION','') }}
 source:
   git_url: https://github.com/htcondor/htcondor
-  git_tag: V{{ environ.get('CONDOR_VERSION','').replace('.', '_') }}
+  git_tag: V{{ environ.get('CONDOR_VERSION','').replace('.', '_') }}-branch
 build:
   number: 1
   rpaths:
     - lib/
     - lib64/
+  detect_binary_files_with_prefix: True
 requirements:
   build:
     - python #{{ environ.get('PY_VER') }}

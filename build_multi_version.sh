@@ -1,4 +1,7 @@
 #!/bin/sh
+# best used with
+# anaconda login
+# conda config --set anaconda_upload yes
 
 # current ubuntu version
 CONDA_PY=27 CONDOR_VERSION=8.4.3 conda build htcondor-python

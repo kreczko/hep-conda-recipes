@@ -21,7 +21,6 @@ requirements:
     - pcre
     - libxml2
     - krb5
-    - uuid
     - boost
   run:
     - python #{{ environ.get('PY_VER') }}

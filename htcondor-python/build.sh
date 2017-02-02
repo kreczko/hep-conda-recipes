@@ -10,7 +10,7 @@ export CPPFLAGS="-I${PREFIX}/include"
 export LDFLAGS="-L${PREFIX}/lib"
 echo $LD_LIBRARY_PATH
 export LD_LIBRARY_PATH="${PREFIX}/lib:${LD_LIBRARY_PATH}"
-
+export PYTHON_VERSION=`python -c 'import sys; version=sys.version_info[:3]; print("{0}.{1}.{2}".format(*version))'`
 
 echo 'gcc version'
 gcc -v
@@ -62,7 +62,9 @@ cmake -DPROPER:BOOL=FALSE \
       -DBOOST_LIBRARYDIR="${PREFIX}/lib" \
       -DCMAKE_EXE_LINKER_FLAGS="-L${PREFIX}/lib" \
       -DCMAKE_MODULE_LINKER_FLAGS="-L${PREFIX}/lib" \
-      -DCMAKE_SHARED_LINKER_FLAGS="-L${PREFIX}/lib"
+      -DCMAKE_SHARED_LINKER_FLAGS="-L${PREFIX}/lib" \
+      -DPYTHONLIBS_VERSION_STRING="${PYTHON_VERSION}"
+
 #-DBUILDID:STRING=UW_development \
 
 # flags not working with older htcondor versions:
@@ -71,3 +73,6 @@ cmake -DPROPER:BOOL=FALSE \
 
 make -j${CPU_COUNT}
 make install
+
+mv $PREFIX/lib/python/*.so  $STDLIB_DIR/.
+rmdir $PREFIX/lib/python

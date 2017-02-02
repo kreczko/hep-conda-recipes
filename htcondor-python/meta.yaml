@@ -21,9 +21,10 @@ requirements:
     - libxml2
     - krb5
     - uuid
-    - boost # but htcondor is still downloading its own version
+    - boost
   run:
     - python #{{ environ.get('PY_VER') }}
+    - boost
 
 test:
   imports:
